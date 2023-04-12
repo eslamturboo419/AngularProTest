@@ -1,0 +1,46 @@
+<form  #frm="ngForm"  (ngSubmit)="submitForm(frm)" >
+<!-- submitForm(frm) -->
+
+    <div class="form-row">
+      <div class="col">
+        <input type="text" id="fname" class="form-control" name="fname" ngModel #fname="ngModel"
+                        placeholder="First name"  (change)="onChanhangeMethod(fname)"
+                        required  minlength="10">
+         <div *ngIf="fname.touched && fname.invalid"  >
+           <span *ngIf="fname.errors?.['required']"  >  Required  </span>
+           <span *ngIf="fname.errors?.['minlength']"  >  man lenght >10  </span>
+        </div>
+       </div>
+
+
+
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Last name">
+      </div>
+    </div>
+    <div class="form-row">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Address">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Password"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"required
+          ngModel #password="ngModel" name="password" id="password">
+
+          <div *ngIf="password.touched && password.invalid"  >
+              <span *ngIf="password.errors?.['required']"  >  Required  </span>
+              <span *ngIf="password.errors?.['pattern']"  >
+                "Must contain at least one
+                 number and one uppercase and lowercase letter,
+                 and at least 8 or more characters"
+              </span>
+           </div>
+
+        </div>
+      </div>
+      <div class="form-row">
+          <div class="col">
+            <button type="submit"  [disabled]="frm.invalid" class="btn btn-primary"> Submit </button>
+          </div>
+      </div>
+  </form>

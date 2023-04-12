@@ -1,0 +1,53 @@
+<form  [formGroup]="userRacForm"  (ngSubmit)="submitForm(userRacForm)" >
+    <!-- submitForm(frm) -->
+
+        <div class="form-row">
+          <div class="col">
+            <input type="text" formControlName="fname"
+             id="fname" class="form-control" name="fname"
+                            placeholder="First name">
+
+          <div *ngIf="userRacForm.get('fname')?.touched && userRacForm.get('fname')?.invalid">
+               <span  >  Required  </span>
+            </div>
+
+           </div>
+
+
+
+          <div class="col">
+            <input type="text" formControlName="lname"
+             class="form-control" placeholder="Last name">
+          </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+              <input type="text" formControlName="address"
+              class="form-control" placeholder="Address">
+            </div>
+            <div class="col">
+              <input type="text" formControlName="password"
+               class="form-control" placeholder="Password"
+              name="password" id="password">
+
+              <!-- <div *ngIf="password.touched && password.invalid"  >
+                  <span *ngIf="password.errors?.['required']"  >  Required  </span>
+                  <span *ngIf="password.errors?.['pattern']"  >
+                    "Must contain at least one
+                     number and one uppercase and lowercase letter,
+                     and at least 8 or more characters"
+                  </span>
+               </div> -->
+
+            </div>
+          </div>
+          <div class="form-row">
+              <div class="col">
+                <button type="submit"  class="btn btn-primary"> Submit </button>
+              </div>
+          </div>
+      </form>
+
+      <div *ngIf="userRacForm.errors"  >
+        <h1>  Errors Forms </h1>
+      </div>

@@ -1,0 +1,68 @@
+
+
+<!-- <div *ngIf="courses.lenght===0" >  No More  </div> -->
+<div  >
+  <ul *ngFor="let item of courses let i=index ;trackBy:ontrackmethod"  >
+    <li> {{item.id}} , {{ item.name }}   ,,, :{{ i+1 }} </li>
+    <button (click)="onPushItem()" >    Add </button>
+    <button (click)="onRemoveItem(i)" > Remove </button>
+  </ul>
+</div>
+
+<hr>
+
+<ul *ngFor="let item of nested"  >
+   <li> {{  item.country }} </li>
+  <ul *ngFor="let item2 of item.names"  >  <li>   {{item2}} </li>  </ul>
+</ul>
+
+<hr>
+<div  [class.border]="true" >  borders </div>
+
+                            <!-- if true show yellow , false show red  -->
+<button  [style.background]="isActive?'yellow':'red'"  (click)="onbtnClick()">  Click </button>
+
+
+
+<!--  button works first , then div   -->
+<div (click)="onDivClick()" >
+<button  (click)="onbtnClickDiv()" >  BtnClick </button>
+</div>
+
+<input type="text"  (keyup)="onKeyUp($event)">
+<br>
+
+<!-- Two Way  -->
+<input [(ngModel)]="bindName"  >
+<p> {{ bindName }} </p>
+<br>
+
+
+<button  (click)="onToglee()" > Toggle  </button>
+<div class="alert alert-secondary" *ngIf="toglle"  > {{  toglle }}  </div>
+
+
+<!--  Switch Case  -->
+
+  <a (click)="setview('one')" >  one </a>
+  <a (click)="setview('second')" >  second </a>
+<button (click)="setview('one')" >  One </button>
+<button (click)="setview('second')" >  second </button>
+
+
+<div [ngSwitch]="defaultDisplay">
+  <p  *ngSwitchCase="'one'" >  this is one </p>
+  <p  *ngSwitchCase="'second'" >  this is second </p>
+</div>
+
+<!-- ngClass , ngStyle  -->
+<div [ngClass]="{  }"></div>
+<div [ngStyle]="{ 'background-color': 'red' }"> kkkk </div>
+
+
+
+
+
+
+
+
